@@ -1,0 +1,126 @@
+@font-face {
+  font-family: "CourierPolski";
+  src: url("../media/fonts/ahabeshastypewriter.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("../media/img/background.gif") no-repeat center center fixed;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 1;
+}
+
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.navbar a {
+  font-family: "CourierPolski", monospace;
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  font-size: 1.3rem;
+  transition: transform 0.7s ease-in-out;
+  display: inline-block;
+}
+
+.navbar a:hover {
+  transition: all 0.7s ease-in-out;
+  transform: translateY(-10px);
+}
+
+a {
+  text-decoration: none;
+  position: relative;
+  z-index: 0;
+}
+
+a::after {
+  content: "";
+  position: absolute;
+  top: 0%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #60171b,
+    #2130a1,
+    #00ff99,
+    #4f0404,
+    #401467
+  );
+  background-size: 100% 100%;
+  z-index: -1;
+  filter: blur(15px);
+  opacity: 0.5;
+  transition: opacity 0.5s;
+  animation: rotate-96 5s linear infinite;
+  border-radius: 100vmax;
+  width: 50px;
+  height: 50px;
+}
+
+a:hover::after {
+  opacity: 1;
+}
+
+.logo-container {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.logo-container img {
+  max-width: 400px;
+  width: 80%;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .navbar ul {
+    gap: 15px;
+  }
+  .navbar a {
+    font-size: 1rem;
+  }
+}
