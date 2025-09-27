@@ -6,8 +6,12 @@
     <title>Music - Augusto Jeria</title>
     <link rel="stylesheet" href="../css/style.css" />
   </head>
-  <body class="idx_body">
+  <body class="lib-body">
+  <div class="lib-background"></div>
+  <div class="content">
     <div class="overlay"></div>
+
+    <!-- navbar separator -->
     <nav class="navbar">
       <ul>
         <li>
@@ -49,7 +53,7 @@
           </a>
         </li>
         <li>
-          <a href="../pages/music.html" title="Music" class="active-site">
+          <a href="" title="Music" class="active-site">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -105,5 +109,95 @@
         </li>
       </ul>
     </nav>
+
+    <!-- Music page main -->
+    <div class="library-main">
+      <!-- Logo -->
+      <div class="m-logo">
+        <img src="../media/img/m-logo.png"/>
+      </div>
+
+      <!-- Canción del mes -->
+<div class="card featured-song">
+  <img src="../media/img/m/sh_4_vinyl.jpg" alt="Song of the Month" />
+  <h3>
+    Song of the month<br>
+    Tender Sugar <br>
+    Akira Yamaoka<br>
+    SILENT HILL 4: THE ROOM OST<br/><br><br>
+    <p id="play-song" class="read-more">
+      Click to reproduce song<span class="ping"></span>
+    </p>
+  </h3>
+</div>
+
+<audio id="featured-audio" src="../media/m/tender-sugar.mp3"></audio>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const playBtn = document.getElementById("play-song");
+    const audio = document.getElementById("featured-audio");
+
+    if (playBtn && audio) {
+      playBtn.addEventListener("click", () => {
+        audio.play().catch(err => {
+          console.log("Need interaction to play", err);
+        });
+
+        playBtn.textContent = "Now Playing: Tender Sugar";
+        playBtn.style.cursor = "default";
+      });
+    }
+  });
+</script>
+
+      <!-- Grid de música -->
+      <div class="cards-container">
+        <div class="card">
+          <img src="../media/img/m/pink_turns_blue_if_two_worlds_kiss.jpg"/>
+          <h3>I coldly stare out <br/>Pink Turns Blue</h3>
+          <p class="read-more"><span class="ping"></span></p>
+        </div>
+
+        <div class="card">
+          <img src="../media/img/m/blonde_redhead_misery_is_a_butterfly.jpg" />
+          <h3>Misery Is a Butterfly <br />Blond Redhead</h3>
+          <p class="read-more"><span class="ping"></span></p>
+        </div>
+
+                <div class="card">
+          <img src="../media/img/m/portishead_third.jpg" />
+          <h3>The Rip <br/>Portishead</h3>
+          <p class="read-more"><span class="ping"></span></p>
+        </div>
+
+        <div class="card">
+          <img src="../media/img/m/cranes_peel-sessions-1989-1990.jpg" />
+          <h3>Give - John Peel Sessions <br>Cranes<br /></h3>
+          <p class="read-more"><span class="ping"></span></p>
+        </div>
+
+        <!-- Agrega más cards según necesites -->
+      </div>
+    </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const playBtn = document.getElementById("play-song");
+    const audio = document.getElementById("featured-audio");
+
+    playBtn.addEventListener("click", () => {
+      audio.play().catch((err) => {
+        console.log("Necesita interacción para reproducir:", err);
+      });
+
+      playBtn.textContent = "Reproduciendo...";
+      playBtn.style.cursor = "default";
+    });
+  });
+</script>
+</body>
+
+
   </body>
 </html>
