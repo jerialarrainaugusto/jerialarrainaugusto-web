@@ -292,6 +292,8 @@ a:hover::after {
   display: flex;
   justify-content: center;
   margin: 0 0 0px;
+  margin-left: 50px;
+  margin-right: 50px;
 }
 
 .lib-logo img {
@@ -303,6 +305,8 @@ a:hover::after {
   width: 100%;
   height: auto;
   display: block;
+  margin-left: 50px;
+  margin-right: 50px;
 }
 
 .cards-container {
@@ -523,6 +527,8 @@ a:hover::after {
   width: 100%;
   height: auto;
   display: block;
+  margin-left: 50px;
+  margin-right: 50px;
 }
 
 .m-logo {
@@ -530,7 +536,7 @@ a:hover::after {
   box-sizing: border-box;
 }
 
-.card img {
+.m-card img {
   max-width: 100%;
   height: auto;
   display: block;
@@ -584,6 +590,92 @@ a:hover::after {
   height: 100%;
   border-radius: 50%;
   background-color: #2a985a;
+  opacity: 0.6;
+  animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* m-card */
+
+.m-card {
+  background: rgba(15, 15, 15, 0.484);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  margin-top: 5px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.m-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.573);
+}
+
+.m-card img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+}
+
+.m-card h3 {
+  margin: 0 15px;
+  margin-bottom: 30px;
+  padding: 10px 0;
+  font-size: 1em;
+  color: white;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .m-card img {
+    height: 350px;
+  }
+}
+
+@media (max-width: 480px) {
+  .m-card img {
+    height: 350px;
+  }
+}
+
+/* ping anim separator */
+.m-card p.read-more {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9em;
+  color: #ddd;
+  gap: 8px;
+  margin-bottom: 20px;
+  margin-top: -25px;
+}
+
+.m-card p.read-more .ping {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  border-radius: 50%;
+  background-color: #982a2a;
+}
+
+.m-card p.read-more .ping::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #7d1b1b;
   opacity: 0.6;
   animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
