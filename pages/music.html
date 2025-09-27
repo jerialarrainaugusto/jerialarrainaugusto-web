@@ -54,22 +54,7 @@
         </li>
         <li>
           <a href="" title="Music" class="active-site">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-disc-album-icon lucide-disc-album"
-            >
-              <rect width="18" height="18" x="3" y="3" rx="2" />
-              <circle cx="12" cy="12" r="5" />
-              <path d="M12 12h.01" />
-            </svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-keyboard-music-icon lucide-keyboard-music"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="M6 8h4"/><path d="M14 8h.01"/><path d="M18 8h.01"/><path d="M2 12h20"/><path d="M6 12v4"/><path d="M10 12v4"/><path d="M14 12v4"/><path d="M18 12v4"/></svg>
           </a>
         </li>
         <li>
@@ -110,48 +95,59 @@
       </ul>
     </nav>
 
-    <!-- Music page main -->
     <div class="library-main">
-      <!-- Logo -->
       <div class="m-logo">
         <img src="../media/img/m-logo.png"/>
       </div>
 
-      <!-- Canción del mes -->
 <div class="card featured-song">
   <img src="../media/img/m/sh_4_vinyl.jpg" alt="Song of the Month" />
   <h3>
-    Song of the month<br>
-    Tender Sugar <br>
-    Akira Yamaoka<br>
-    SILENT HILL 4: THE ROOM OST<br/><br><br>
-    <p id="play-song" class="read-more">
-      Click to reproduce song<span class="ping"></span>
+    Song of the month<br />
+    Tender Sugar<br />
+    Akira Yamaoka<br />
+    SILENT HILL 4: THE ROOM OST<br /><br /><br />
+
+    <p id="play-song" class="read-more play-button">
+      <span class="play-label">Press to play song</span>
+      <span class="play-ping"></span>
     </p>
   </h3>
+
+  <audio id="song-audio" src="../media/m/tender-sugar.mp3"></audio>
 </div>
+
 
 <audio id="featured-audio" src="../media/m/tender-sugar.mp3"></audio>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const playBtn = document.getElementById("play-song");
-    const audio = document.getElementById("featured-audio");
+  document.addEventListener("DOMContentLoaded", function () {
+    const playButton = document.getElementById("play-song");
+    const audio = document.getElementById("song-audio");
+    const playLabel = playButton.querySelector(".play-label");
 
-    if (playBtn && audio) {
-      playBtn.addEventListener("click", () => {
-        audio.play().catch(err => {
-          console.log("Need interaction to play", err);
-        });
-
-        playBtn.textContent = "Now Playing: Tender Sugar";
-        playBtn.style.cursor = "default";
+    if (playButton && audio) {
+      playButton.addEventListener("click", function () {
+        if (audio.paused) {
+          audio.play()
+            .then(() => {
+              playButton.classList.add("playing");
+              playLabel.textContent = "Press to Pause";
+            })
+            .catch(err => {
+              console.error("Oops! There was an error", err);
+            });
+        } else {
+          audio.pause();
+          playButton.classList.remove("playing");
+          playLabel.textContent = "Press to play song";
+        }
       });
     }
   });
 </script>
 
-      <!-- Grid de música -->
+
       <div class="cards-container">
         <div class="card">
           <img src="../media/img/m/pink_turns_blue_if_two_worlds_kiss.jpg"/>
@@ -177,27 +173,7 @@
           <p class="read-more"><span class="ping"></span></p>
         </div>
 
-        <!-- Agrega más cards según necesites -->
       </div>
     </div>
-
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const playBtn = document.getElementById("play-song");
-    const audio = document.getElementById("featured-audio");
-
-    playBtn.addEventListener("click", () => {
-      audio.play().catch((err) => {
-        console.log("Necesita interacción para reproducir:", err);
-      });
-
-      playBtn.textContent = "Reproduciendo...";
-      playBtn.style.cursor = "default";
-    });
-  });
-</script>
-</body>
-
-
   </body>
 </html>
